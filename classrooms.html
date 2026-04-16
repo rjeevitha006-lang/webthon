@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajarajeshwari College of Dental Sciences & Hospital</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial,sans-serif;
+  
+}
+
+/* Top Bar */
+.top-bar {
+    background: linear-gradient(
+        90deg,
+        #FFD700,
+        #fff8dc,
+        #FFD700,
+        #C9A227,
+        #FFD700
+    );
+    background-size: 200% auto;
+    color: black;
+    padding: 6px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    animation: shine 4s linear infinite;
+  }
+
+@keyframes shine {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+}
+
+/* LEFT SIDE */
+.top-left a {
+    margin-right: 15px;
+    text-decoration: none;   /* ❌ removes underline */
+    color: rgb(17, 16, 16);
+    font-size: 10px;
+}
+
+/* RIGHT SIDE */
+.top-right {
+    display: flex;
+    gap: 10px;   /* space between phone & email */
+    font-size: 10px;
+}
+
+/* remove underline if any */
+.top-right span {
+    text-decoration: none;
+}
+
+/* Remove underline */
+.navbar a {
+    text-decoration:none;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hidden dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(240, 229, 229);
+    min-width: 180px;
+    box-shadow: 0px 4px 8px rgba(242, 228, 228, 0.2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Dropdown items */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    color: rgb(15, 14, 14);
+}
+
+/* Hover effect */
+.dropdown-menu li a:hover {
+    background-color: #fae7e7;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+/* Header */
+.header {
+    background: linear-gradient(to right, #5361e4, #26a69a);
+    color: rgb(8, 8, 58);
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    height: 100px;
+    margin-right:10px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 10px;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(
+        90deg,
+        #FFD700,
+        #fff8dc,
+        #FFD700,
+        #C9A227,
+        #FFD700
+    );
+    background-size: 200% auto;
+    color: black;
+    padding: 6px 15px;
+    font-size: 14px;
+    display: flex;
+    justify-content:center;
+    gap: 10px;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgb(230, 223, 237);
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #004d40;
+}
+
+/* SECTION */
+.transport{
+  padding:60px 20px;
+  background:linear-gradient(135deg,#000,#0a1f44);
+  color:white;
+}
+
+/* CONTAINER */
+.transport-container{
+  display:flex;
+  gap:40px;
+  max-width:1100px;
+  margin:auto;
+  flex-wrap:wrap;
+}
+
+/* LEFT */
+.transport-left{
+  flex:2;
+
+  opacity:0;
+  transform:translateX(-50px);
+  animation:slideLeft 1s ease forwards;
+}
+
+/* TITLE */
+.transport-title{
+  font-size:32px;
+  margin-bottom:20px;
+
+  color:#ffd700;
+}
+
+/* TEXT */
+.transport-left p{
+  margin-bottom:15px;
+  color:#ddd;
+  line-height:1.6;
+}
+
+/* IMAGES */
+.transport-images{
+  display:flex;
+  gap:15px;
+  margin-top:20px;
+}
+
+.transport-images img{
+  width:48%;
+  border-radius:10px;
+
+  transition:0.4s;
+}
+
+.transport-images img:hover{
+  transform:scale(1.05);
+}
+
+/* RIGHT */
+.transport-right{
+  flex:1;
+  background:rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:10px;
+
+  backdrop-filter:blur(10px);
+
+  opacity:0;
+  transform:translateX(50px);
+  animation:slideRight 1s ease forwards;
+}
+
+/* RIGHT TITLE */
+.transport-right h3{
+  color:#ffd700;
+  margin-bottom:15px;
+}
+
+/* LIST */
+.transport-right ul{
+  list-style:none;
+  padding:0;
+}
+
+.transport-right li{
+  padding:10px;
+  border-bottom:1px solid white;
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+/* HOVER */
+.transport-right li:hover{
+  color:#ffd700;
+  transform:translateX(5px);
+}
+
+/* ACTIVE */
+.transport-right .active{
+  color:#ffd700;
+  font-weight:bold;
+}
+
+/* ANIMATION */
+@keyframes slideLeft{
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+@keyframes slideRight{
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+.footer {
+    position: relative;
+    margin-top: 80px;
+    font-family: Arial, sans-serif;
+}
+
+/* ===================== */
+/* CURVED TOP BAR */
+/* ===================== */
+
+.footer-top {
+    background: linear-gradient(90deg, #00c6ff, #00ffa3);
+    text-align: center;
+    padding: 3px;
+    font-weight: bold;
+    color: white;
+
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* ===================== */
+/* MAIN CONTENT */
+/* ===================== */
+
+.footer-content {
+    background: linear-gradient(180deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+
+    animation: fadeUp 1s ease;
+}
+
+.footer-content p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+/* ===================== */
+/* SOCIAL ICONS */
+/* ===================== */
+
+.socials {
+    margin-top: 20px;
+}
+
+.socials a {
+    display: inline-block;
+    margin: 6px;
+    width: 40px;
+    height: 40px;
+
+    line-height: 40px;
+    text-align: center;
+
+    background: #00c6ff;
+    color: white;
+
+    border-radius: 6px;
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+/* 🔥 HOVER EFFECT */
+.socials a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: #00ffa3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===================== */
+/* 🔥 GOLD SHINING BOTTOM */
+/* ===================== */
+
+.footer-bottom {
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #3b2f00;
+
+    /* GOLD BASE */
+    background: linear-gradient(
+        90deg,
+        #FFD700,
+        #fff8dc,
+        #FFD700,
+        #C9A227,
+        #FFD700
+    );
+
+    overflow: hidden;
+}
+
+/* ✨ SHINE EFFECT */
+.footer-bottom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+
+    animation: shine 3s infinite;
+}
+
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.dropdown {
+    position: relative;
+}
+
+/* IMPORTANT: remove gap issue */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;   /* attach exactly below */
+    left: 0;
+    background: #afb9cd;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 180px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+
+.dropdown-menu li {
+    margin: 5px;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+/* Hover box effect */
+.dropdown-menu li a:hover {
+    background: linear-gradient(90deg, gold, orange);
+    color: black;
+    transform: translateX(5px);
+}
+
+/* KEEP OPEN when hovering BOTH parent + menu */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ADD SAFE HOVER AREA (VERY IMPORTANT 🔥) */
+.dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 10px;   /* bridge gap */
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Top Info -->
+    <div class="top-bar">
+        <div class="top-left">
+        <a href="erp.html"> ERP </a>
+        <a href="esi.html"> ESI </a>
+        <li class="dropdown">
+            <a href="#">Accreditation ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="https://www.rrdch.org/rrdch/wp-content/uploads/2013/08/image-2.jpg" target="_blank">NAAC</a></li>
+                <li><a href="NABH-accredited.pdf" target="_blank">NABH</a></li>
+                <li><a href="iso.pdf" target="_blank">ISO</a></li>
+                <li><a href="https://www.iao.org/assets/img/certificate_blank.jpg" target="_blank">IAO</a></li>
+                <li><a href="rcpg.pdf" target="_blank">RCPS</a></li>
+                <li><a href="slmc.pdf" target="_blank">SLMC</a></li>
+                <li><a href="aishe.pdf" target="_blank">AISHE</a></li>
+            </ul>
+        <a href="#"> DCI </a>
+    <li class="dropdown">    
+        <a href="#"> Brochure </a>
+        <ul class="dropdown-menu">
+            <li><a href="brochure1.pdf" download>Download Brochure</a></li>
+        </ul>
+    </li>                
+        <a href="recognition.html"> Recognitions </a>
+        <a href="#"> Committee </a>
+        <a href="#"> Schedule </a>
+        <a href="admissionenq.html">Admission Enquiry</a>
+        <a herf="#">Circulars</a>
+        <a herf="#">Online FEES</a>
+        <a herf="#">FEE(TERM)</a>
+        </div>
+            <div class="top-right">
+                <span>📞 +91-80-2843 7150, +91 9901559955 </span>
+                <span>📧 principalrrdch@gmail.com</span>
+            </div> 
+    </div>
+  
+    <div class="announcement">
+      <marquee>
+        🎓 'Application are invited from eligible candidates for Certificate Course in Implantology 2026-27, Interested candidates send your application to: pgrrdch@gmail.com.'   
+      </marquee>
+    </div>
+  
+    
+
+<!-- Header -->
+<div class="header">
+    <img src="denlogo.jpg" alt="Dental College Logo">
+    <div>
+        <h1>Rajarajeshwari Dental College And Hospital</h1>
+        <hr class="line">
+        <p>RECOGNIZED BY DENTAL COUNCIL OF INDIA & GOVT.OF INDIA | AFFILIATED TO RAJIVGANDHI UNIVERSITY OF HEALTH SCIENCE, BANGALORE</p>  
+    </div>
+    <div class="logos">
+        <img src="naac.png" title="NAAC Accredited">
+        <img src="nirf (1).png" title="NIRF Ranking">
+        <img src="dci1.png" title="Approved by Dental Council of India">
+        <img src="rgu.png" title="Affiliated to RGUHS">
+    </div> 
+   
+</div>
+ 
+<!-- Navigation -->
+<div class="navbar">
+       <a href="index.html">Home</a>
+       <li class="dropdown">
+       <a href="about.html">About</a>
+       <ul class="dropdown-menu">
+        <li><a href="#" target="_blank">Trust</a></li>
+        <li><a href="#" target="_blank">Management</a></li>
+        <li><a href="#" target="_blank">Governing Council</a></li>
+        <li><a href="#" target="_blank">Vision & Mission</a></li>
+       </ul>
+
+    <li class="dropdown">
+       <a href="#">Courses</a>
+       <ul class="dropdown-menu">
+        <li><a href="bds.html" target="_blank">Bachelor of Dental Surgey(BDS)</a></li>
+        <li><a href="mdds.html" target="_blank">Master of Dental Surgery(NDS)</a></li>
+        <li><a href="phd.html" target="_blank">Doctor of Philosophy(Ph.D)</a></li>
+        <li><a href="certificate.html" target="_blank">Certificate Courses</a></li>
+        </ul>
+        <li class="dropdown"></li>
+        <a href="#">Departments</a>
+        <ul class="dropdown-menu">
+         <li><a href="oral1.html" target="_blank">Oral Pathology & Microbiology</a></li>
+        <li><a href="oral.html" target="_blank">Oral Medicine</a></li>
+        <li><a href="prosthetics.html" target="_blank">Prosthetics & Crown & Bridge</a></li>
+        <li><a href="oral2.html" target="_blank">Orthodontics &  Dentofacial Orthopedics</a></li>
+        <li><a href="oral3.html" target="_blank">Oral & Maxillofacial Surgery</a></li>
+        <li><a href="oral4.html" target="_blank">Conservative Dentistry & Endodontics</a></li>
+        <li><a href="oral5.html" target="_blank">Periodontology</a></li>
+        <li><a href="oral6.html" target="_blank">Public Health Dentistry</a></li>
+          <li><a href="oral7.html" target="_blank">Pedodontics & Preventive Dentistry</a></li>
+          </ul>
+
+       <a href="#">Academics</a>
+       <a href="#">Hospital</a>
+       <a href="#">Research</a>
+       <a href="#">Contact</a>
+       <a href="appointment.html">Appointment</a>
+    </div>   
+
+</div>
+
+<section class="transport">
+
+    <div class="transport-container">
+  
+      <!-- LEFT CONTENT -->
+      <div class="transport-left">
+  
+        <h2 class="transport-title">Class Rooms</h2>
+  
+        <p>
+            The classrooms at RajaRajeswari Dental College are spacious, well-ventilated, and designed to provide a comfortable learning environment. Equipped with modern teaching aids such as projectors and audio-visual systems, they support interactive and effective learning. The classrooms create an ideal atmosphere for students to gain knowledge and actively participate in academic activities.
+            
+        </p>
+  
+    
+  
+        <div class="transport-images">
+          <img src="https://www.rrce.org/rrce/wp-content/uploads/2013/06/DSC_9608.jpg">
+          <img src="https://www.rrce.org/rrce/wp-content/uploads/2013/06/DSC_0185.jpg">
+        </div>
+  
+      </div>
+  
+      <!-- RIGHT MENU -->
+      <div class="transport-right">
+  
+        <h3>Facilities</h3>
+  
+        <ul>
+            <li><a href="auditorium.html">🏛 Auditorium</a></li>
+            <li><a href="cafeteria.html">🍽 Cafeteria</a></li>
+            <li><a href="library.html">📚 Library</a></li>
+            <li><a href="classrooms.html">🏫 Classrooms</a></li>
+            <li><a href="seminar.html">🎤 Seminar Hall</a></li>
+            <li><a href="hostel.html">🛏 Hostel</a></li>
+            <li><a href="banking.html">🏦 Banking</a></li>
+            <li><a href="lab.html">🧪 Laboratories</a></li>
+            <li><a href="medical.html">🏥 Medical</a></li>
+            <li><a href="sports.html">⚽ Sports</a></li>
+            <li><a href="transport.html">🚌 Transportation</a></li>
+        </ul>
+  
+      </div>
+    </div>
+  
+  </section>
+
+  <div class="footer-content">
+
+    <p>📍 RajaRajeswari Dental College & Hospital</p>
+    <p>🏢 No.14, Ramohalli Cross, Kumbalgodu, Bengaluru - 560074, Karnataka, India</p>
+    <p>📧 principalrrdch@gmail.com</p>
+    <p>📞 +91-80-2843 7150, +91-80-2843 7468, +91 9901559955</p>
+
+    <div class="socials">
+
+      <a href="#" title="Google">
+          <i class="fab fa-google"></i>
+      </a>
+  
+      <a href="#" title="RSS">
+          <i class="fas fa-rss"></i>
+      </a>
+  
+      <a href="#" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+      </a>
+  
+      <a href="#" title="YouTube">
+          <i class="fab fa-youtube"></i>
+      </a>
+  
+      <a href="#" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+      </a>
+  
+      <a href="#" title="Instagram">
+          <i class="fab fa-instagram"></i>
+      </a>
+  
+      <a href="#" title="Twitter">
+          <i class="fab fa-twitter"></i>
+      </a>
+  
+  </div>
+
+</div>
+
+<div class="footer-bottom">
+    © 2026 RR Institutions | All Rights Reserved 
+</div>
+
+</section>

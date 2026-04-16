@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajarajeshwari College of Dental Sciences & Hospital</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial,sans-serif;
+  
+}
+
+/* Top Bar */
+.top-bar {
+    background: linear-gradient(
+        90deg,
+        #FFD700,
+        #fff8dc,
+        #FFD700,
+        #C9A227,
+        #FFD700
+    );
+    background-size: 200% auto;
+    color: black;
+    padding: 6px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    animation: shine 4s linear infinite;
+  }
+
+@keyframes shine {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+}
+
+/* LEFT SIDE */
+.top-left a {
+    margin-right: 15px;
+    text-decoration: none;   /* ❌ removes underline */
+    color: rgb(17, 16, 16);
+    font-size: 10px;
+}
+
+/* RIGHT SIDE */
+.top-right {
+    display: flex;
+    gap: 10px;   /* space between phone & email */
+    font-size: 10px;
+}
+
+/* remove underline if any */
+.top-right span {
+    text-decoration: none;
+}
+
+/* Remove underline */
+.navbar a {
+    text-decoration:none;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hidden dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(240, 229, 229);
+    min-width: 180px;
+    box-shadow: 0px 4px 8px rgba(242, 228, 228, 0.2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Dropdown items */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    color: rgb(15, 14, 14);
+}
+
+/* Hover effect */
+.dropdown-menu li a:hover {
+    background-color: #fae7e7;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+/* Header */
+.header {
+    background: linear-gradient(to right, #5361e4, #26a69a);
+    color: rgb(8, 8, 58);
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    height: 100px;
+    margin-right:10px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 10px;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(
+        90deg,
+        #FFD700,
+        #fff8dc,
+        #FFD700,
+        #C9A227,
+        #FFD700
+    );
+    background-size: 200% auto;
+    color: black;
+    padding: 6px 15px;
+    font-size: 14px;
+    display: flex;
+    justify-content:center;
+    gap: 10px;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgb(230, 223, 237);
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #004d40;
+}
+
+.chairman-section{
+      padding:60px;
+      color:white;
+      text-align:center;
+
+      background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('https://thumbs.dreamstime.com/b/golden-pen-writing-journal-focus-productivity-inspiration-brass-pen-warm-light-study-work-writer-aesthetic-golden-pen-writing-365269198.jpg?w=992');
+
+      background-size:cover;
+      background-position:center;
+
+      animation:fadeIn 1.5s ease;
+    }
+
+    .chairman-section h2{
+      font-size:32px;
+      margin-bottom:20px;
+    }
+
+    .chairman-section p{
+      max-width:800px;
+      margin:auto;
+      margin-bottom:15px;
+    }
+
+    .chairman-section ul{
+      list-style:none;
+      margin-top:20px;
+      padding:0;
+    }
+
+    .chairman-section li{
+      margin:10px 0;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0;}
+      to{opacity:1;}
+    }
+
+    .footer {
+    position: relative;
+    margin-top: 80px;
+    font-family: Arial, sans-serif;
+}
+
+/* ===================== */
+/* CURVED TOP BAR */
+/* ===================== */
+
+.footer-top {
+    background: linear-gradient(90deg, #00c6ff, #00ffa3);
+    text-align: center;
+    padding: 3px;
+    font-weight: bold;
+    color: white;
+
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* ===================== */
+/* MAIN CONTENT */
+/* ===================== */
+
+.footer-content {
+    background: linear-gradient(180deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+
+    animation: fadeUp 1s ease;
+}
+
+.footer-content p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+/* ===================== */
+/* SOCIAL ICONS */
+/* ===================== */
+
+.socials {
+    margin-top: 20px;
+}
+
+.socials a {
+    display: inline-block;
+    margin: 6px;
+    width: 40px;
+    height: 40px;
+
+    line-height: 40px;
+    text-align: center;
+
+    background: #00c6ff;
+    color: white;
+
+    border-radius: 6px;
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+/* 🔥 HOVER EFFECT */
+.socials a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: #00ffa3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===================== */
+/* 🔥 GOLD SHINING BOTTOM */
+/* ===================== */
+
+.footer-bottom {
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #3b2f00;
+
+    /* GOLD BASE */
+    background: linear-gradient(
+        90deg,
+        #FFD700,
+        #fff8dc,
+        #FFD700,
+        #C9A227,
+        #FFD700
+    );
+
+    overflow: hidden;
+}
+
+/* ✨ SHINE EFFECT */
+.footer-bottom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+
+    animation: shine 3s infinite;
+}
+
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+
+
+
+.dropdown {
+    position: relative;
+}
+
+/* IMPORTANT: remove gap issue */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;   /* attach exactly below */
+    left: 0;
+    background: #afb9cd;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 180px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+
+.dropdown-menu li {
+    margin: 5px;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+/* Hover box effect */
+.dropdown-menu li a:hover {
+    background: linear-gradient(90deg, gold, orange);
+    color: black;
+    transform: translateX(5px);
+}
+
+/* KEEP OPEN when hovering BOTH parent + menu */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ADD SAFE HOVER AREA (VERY IMPORTANT 🔥) */
+.dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 10px;   /* bridge gap */
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- Top Info -->
+    <div class="top-bar">
+        <div class="top-left">
+        <a href="erp.html"> ERP </a>
+        <a href="esi.html"> ESI </a>
+        <li class="dropdown">
+            <a href="#">Accreditation ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="https://www.rrdch.org/rrdch/wp-content/uploads/2013/08/image-2.jpg" target="_blank">NAAC</a></li>
+                <li><a href="NABH-accredited.pdf" target="_blank">NABH</a></li>
+                <li><a href="iso.pdf" target="_blank">ISO</a></li>
+                <li><a href="https://www.iao.org/assets/img/certificate_blank.jpg" target="_blank">IAO</a></li>
+                <li><a href="rcpg.pdf" target="_blank">RCPS</a></li>
+                <li><a href="slmc.pdf" target="_blank">SLMC</a></li>
+                <li><a href="aishe.pdf" target="_blank">AISHE</a></li>
+            </ul>
+        <a href="#"> DCI </a>
+    <li class="dropdown">    
+        <a href="#"> Brochure </a>
+        <ul class="dropdown-menu">
+            <li><a href="brochure1.pdf" download>Download Brochure</a></li>
+        </ul>
+    </li>                
+        <a href="recognition.html"> Recognitions </a>
+        <a href="#"> Committee </a>
+        <a href="#"> Schedule </a>
+        <a href="admissionenq.html">Admission Enquiry</a>
+        <a herf="#">Circulars</a>
+        <a herf="#">Online FEES</a>
+        <a herf="#">FEE(TERM)</a>
+        </div>
+            <div class="top-right">
+                <span>📞 +91-80-2843 7150, +91 9901559955 </span>
+                <span>📧 principalrrdch@gmail.com</span>
+            </div> 
+    </div>
+  
+    <div class="announcement">
+      <marquee>
+        🎓 'Application are invited from eligible candidates for Certificate Course in Implantology 2026-27, Interested candidates send your application to: pgrrdch@gmail.com.'   
+      </marquee>
+    </div>
+  
+    
+
+<!-- Header -->
+<div class="header">
+    <img src="denlogo.jpg" alt="Dental College Logo">
+    <div>
+        <h1>Rajarajeshwari Dental College And Hospital</h1>
+        <hr class="line">
+        <p>RECOGNIZED BY DENTAL COUNCIL OF INDIA & GOVT.OF INDIA | AFFILIATED TO RAJIVGANDHI UNIVERSITY OF HEALTH SCIENCE, BANGALORE</p>  
+    </div>
+    <div class="logos">
+        <img src="naac.png" title="NAAC Accredited">
+        <img src="nirf (1).png" title="NIRF Ranking">
+        <img src="dci1.png" title="Approved by Dental Council of India">
+        <img src="rgu.png" title="Affiliated to RGUHS">
+    </div> 
+   
+</div>
+ 
+<!-- Navigation -->
+<div class="navbar">
+       <a href="index.html">Home</a>
+       <li class="dropdown">
+        <a href="#">About Us ▾</a>
+        <ul class="dropdown-menu">
+            <li><a href="trust.html">Trust</a></li>
+            <li><a href="management.html">Management</a></li>
+            <li><a href="governingcouncil.html">Governing Council</a></li>
+            <li><a href="vision.html">Vision & Mission</a></li>
+        </ul>
+       <a href="#">Courses</a>
+       <a href="#">Departments</a>
+       <a href="#">Academics</a>
+       <a href="#">Hospital</a>
+       <a href="#">Research</a>
+       <a href="#">Contact</a>
+       <a href="appointment.html">Appointment</a>
+    </div>   
+
+</div>
+
+<div class="chairman-section">
+
+  <h2>About Our Chairman</h2>
+
+  
+  <p>
+   A. C. Shanmugam, the Founder Chairman of Rajarajeswari Dental College and Hospital, is a visionary leader and eminent educationist who has made remarkable contributions to the field of higher education in India. With a strong commitment to academic excellence and social responsibility, he established the institution under the Moogambigai Charitable and Educational Trust with the aim of providing world-class education and healthcare services.
+ 
+  </p>
+
+  <p>
+  Under his dynamic leadership, the college has grown into a reputed center for dental education, equipped with modern infrastructure, advanced laboratories, and state-of-the-art clinical facilities. His focus on integrating theoretical knowledge with practical exposure ensures that students are well-prepared to meet the challenges of the healthcare industry.
+
+  </p>
+
+  <p>
+  He strongly believes in nurturing not only skilled professionals but also responsible citizens with high ethical values. His vision emphasizes holistic development, encouraging students to excel in academics, research, and community service. Through various initiatives, he has promoted innovation, interdisciplinary learning, and continuous improvement in educational standards.
+  </p>
+
+  <p>
+  His dedication to excellence has led the institution to achieve recognition for quality education, patient care, and research contributions. With a mission to serve society, he continues to guide the institution towards greater heights by fostering a culture of compassion, discipline, and lifelong learning.
+  </p>
+  </div> 
+  <div class="footer-content">
+
+    <p>📍 RajaRajeswari Dental College & Hospital</p>
+    <p>🏢 No.14, Ramohalli Cross, Kumbalgodu, Bengaluru - 560074, Karnataka, India</p>
+    <p>📧 principalrrdch@gmail.com</p>
+    <p>📞 +91-80-2843 7150, +91-80-2843 7468, +91 9901559955</p>
+
+    <div class="socials">
+
+      <a href="#" title="Google">
+          <i class="fab fa-google"></i>
+      </a>
+  
+      <a href="#" title="RSS">
+          <i class="fas fa-rss"></i>
+      </a>
+  
+      <a href="#" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+      </a>
+  
+      <a href="#" title="YouTube">
+          <i class="fab fa-youtube"></i>
+      </a>
+  
+      <a href="#" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+      </a>
+  
+      <a href="#" title="Instagram">
+          <i class="fab fa-instagram"></i>
+      </a>
+  
+      <a href="#" title="Twitter">
+          <i class="fab fa-twitter"></i>
+      </a>
+  
+  </div>
+
+</div>
+
+<div class="footer-bottom">
+    © 2026 RR Institutions | All Rights Reserved 
+</div>
+
+</section>       
+   

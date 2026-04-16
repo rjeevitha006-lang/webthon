@@ -1,0 +1,162 @@
+body{
+    font-family: Arial;
+    margin:0;
+}
+
+header{
+    background:#004aad;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+nav{
+    background:#eee;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    margin:15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+section{
+    padding:40px;
+}
+.footer {
+    position: relative;
+    margin-top: 80px;
+    font-family: Arial, sans-serif;
+}
+
+/* ===================== */
+/* CURVED TOP BAR */
+/* ===================== */
+
+.footer-top {
+    background: linear-gradient(90deg, #00c6ff, #00ffa3);
+    text-align: center;
+    padding: 3px;
+    font-weight: bold;
+    color: white;
+
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* ===================== */
+/* MAIN CONTENT */
+/* ===================== */
+
+.footer-content {
+    background: linear-gradient(180deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+
+    animation: fadeUp 1s ease;
+}
+
+.footer-content p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+/* ===================== */
+/* SOCIAL ICONS */
+/* ===================== */
+
+.socials {
+    margin-top: 20px;
+}
+
+.socials a {
+    display: inline-block;
+    margin: 6px;
+    width: 40px;
+    height: 40px;
+
+    line-height: 40px;
+    text-align: center;
+
+    background: #00c6ff;
+    color: white;
+
+    border-radius: 6px;
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+/* 🔥 HOVER EFFECT */
+.socials a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: #00ffa3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===================== */
+/* 🔥 GOLD SHINING BOTTOM */
+/* ===================== */
+
+.footer-bottom {
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #3b2f00;
+
+    /* GOLD BASE */
+    background: linear-gradient(
+        90deg,
+        #FFD700,
+        #fff8dc,
+        #FFD700,
+        #C9A227,
+        #FFD700
+    );
+
+    overflow: hidden;
+}
+
+/* ✨ SHINE EFFECT */
+.footer-bottom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+
+    animation: shine 3s infinite;
+}
+
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+

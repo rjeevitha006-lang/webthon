@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental College</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* FULL CENTER */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    background: linear-gradient(270deg,#0077b6,#00b4d8,#90e0ef);
+    background-size:600% 600%;
+    animation:bgMove 10s infinite;
+}
+
+/* BACKGROUND ANIMATION */
+@keyframes bgMove{
+    0%{background-position:0%;}
+    50%{background-position:100%;}
+    100%{background-position:0%;}
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    margin-bottom:20px;
+    color:white;
+}
+
+.header h1{
+    font-size:30px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px white;}
+    to{ text-shadow:0 0 25px cyan;}
+}
+
+/* MAIN BOX (CENTERED) */
+.container{
+    display:flex;
+    gap:40px;
+    padding:20px;
+    border-radius:20px;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* IMAGE */
+.image img{
+    width:400px;
+    border-radius:15px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* FORM */
+.form{
+    width:300px;
+    color:white;
+}
+
+.form h2{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+/* INPUTS */
+.form input,
+.form select,
+.form textarea{
+    width:100%;
+    margin:8px 0;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+/* INPUT EFFECT */
+.form input:focus,
+.form select:focus,
+.form textarea:focus{
+    transform:scale(1.05);
+}
+
+/* BUTTON */
+.form button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#0077b6;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.form button:hover{
+    background:#00b4d8;
+    transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Rajarajeshwari Dental College & Hospital</h1>
+    <p>Admissions 2026-27</p>
+</div>
+
+<!-- CENTER BOX -->
+<div class="container">
+
+    <!-- IMAGE -->
+    <div class="image">
+        <img src="erp.jpg" alt="College Image">
+    </div>
+
+    <!-- FORM -->
+    <div class="form">
+        <h2>Apply Online</h2>
+
+        <input type="text" placeholder="Enter Name">
+        <input type="text" placeholder="+91">
+        <input type="email" placeholder="Email">
+
+        <select>
+            <option>Select Course</option>
+            <option>BDS</option>
+            <option>MDS</option>
+        </select>
+
+        <textarea placeholder="Your Query"></textarea>
+
+        <button>Apply Now</button>
+    </div>
+
+</div>
+
+</body>
+</html>

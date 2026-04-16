@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Appointment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url("erp.jpg")no-repeat center/cover;
+    background-size: cover;
+}
+
+/* CONTAINER */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* PROGRESS BAR */
+.progress {
+    height: 6px;
+    background: #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 33%;
+    background: #c89b3c;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+/* STEP */
+.step {
+    display: none;
+    animation: fade 0.5s ease;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {opacity:0; transform:translateX(30px);}
+    to {opacity:1; transform:translateX(0);}
+}
+
+/* INPUT */
+.input-box {
+    margin: 15px 0;
+}
+
+.input-box input,
+.input-box select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #c89b3c;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* TIME SLOT */
+.slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.slot {
+    padding: 8px 12px;
+    background: #eee;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.slot.active {
+    background: #c89b3c;
+    color: white;
+}
+
+/* POPUP */
+.popup {
+    position: fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background: rgba(0,0,0,0.5);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-box {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Rajarajeswari Dental College</h1>
+        <p>Book Your Appoinment</p>
+    </div>    
+<div class="card">
+
+<div class="progress">
+    <div class="progress-bar" id="bar"></div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step active" id="step1">
+    <h3>Patient Details</h3>
+    <div class="input-box"><input type="text" id="name" placeholder="Name"></div>
+    <div class="input-box"><input type="tel" id="phone" placeholder="Phone"></div>
+    <button onclick="next(1)">Next</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="step" id="step2">
+    <h3>Select Department & Doctor</h3>
+    <div class="input-box">
+        <select id="dept">
+            <option>General Dentistry</option>
+            <option>Orthodontics</option>
+        </select>
+    </div>
+    <div class="input-box">
+        <select id="doctor">
+            <option>Dr. Kumar</option>
+            <option>Dr. Priya</option>
+        </select>
+    </div>
+    <button onclick="prev(2)">Back</button>
+    <button onclick="next(2)">Next</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="step" id="step3">
+    <h3>Select Date & Time</h3>
+    <div class="input-box"><input type="date" id="date"></div>
+
+    <div class="slots">
+        <div class="slot" onclick="selectSlot(this)">10 AM</div>
+        <div class="slot" onclick="selectSlot(this)">11 AM</div>
+        <div class="slot" onclick="selectSlot(this)">12 PM</div>
+    </div>
+
+    <button onclick="prev(3)">Back</button>
+    <button onclick="submitForm()">Confirm</button>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="popup-box">
+        <h3>✅ Appointment Confirmed</h3>
+        <p id="details"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<script>
+
+let current = 1;
+let selectedTime = "";
+
+function next(step){
+    document.getElementById("step"+step).classList.remove("active");
+    current++;
+    document.getElementById("step"+current).classList.add("active");
+    updateBar();
+}
+
+function prev(step){
+    document.getElementById("step"+step).classList.remove("active");
+    current--;
+    document.getElementById("step"+current).classList.add("active");
+    updateBar();
+}
+
+function updateBar(){
+    document.getElementById("bar").style.width = (current*33)+"%";
+}
+
+function selectSlot(el){
+    document.querySelectorAll(".slot").forEach(s=>s.classList.remove("active"));
+    el.classList.add("active");
+    selectedTime = el.innerText;
+}
+
+function submitForm(){
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let dept = document.getElementById("dept").value;
+    let doctor = document.getElementById("doctor").value;
+    let date = document.getElementById("date").value;
+
+    localStorage.setItem("appointment", JSON.stringify({name,phone,dept,doctor,date,selectedTime}));
+
+    document.getElementById("details").innerText =
+    `${name} | ${doctor} | ${date} | ${selectedTime}`;
+
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

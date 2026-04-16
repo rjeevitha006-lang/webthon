@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply Form</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    color:white;
+    margin-bottom:15px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px white;}
+    to{ text-shadow:0 0 25px cyan;}
+}
+
+/* FORM BOX */
+.form-box{
+    width:360px;
+    padding:25px;
+    border-radius:20px;
+    background: linear-gradient(145deg,#1e3c72,#2a5298);
+    box-shadow:0 0 20px #00c6ff, 0 20px 50px rgba(0,0,0,0.6);
+    color:white;
+    text-align:center;
+}
+
+/* INPUTS */
+.form-box input,
+.form-box select,
+.form-box textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+/* ERROR BORDER */
+.error-border{
+    border:2px solid red !important;
+}
+
+/* BUTTON */
+button{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#00c6ff;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0072ff;
+    transform:scale(1.05);
+}
+
+/* CAPTCHA */
+.captcha{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.code{
+    background:white;
+    color:black;
+    padding:8px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+/* ERROR TEXT */
+.error{
+    margin-top:6px;
+    font-size:14px;
+}
+
+/* SHAKE */
+.shake{
+    animation:shake 0.4s;
+}
+
+@keyframes shake{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-5px);}
+    50%{transform:translateX(5px);}
+    75%{transform:translateX(-5px);}
+    100%{transform:translateX(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Rajarajeshwari Dental College & Hospital</h1>
+    <p>Admissions 2026-27</p>
+</div>
+
+<!-- FORM -->
+<div class="form-box" id="formBox">
+
+    <h2>Apply Online</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+
+    <!-- PHONE (ONLY NUMBERS) -->
+    <input type="tel" id="phone" placeholder="+91" maxlength="10"
+    oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+
+    <input type="email" id="email" placeholder="Email">
+
+    <select id="course">
+        <option>Select Course</option>
+        <option>BDS</option>
+        <option>MDS</option>
+    </select>
+
+    <textarea placeholder="Query (optional)"></textarea>
+
+    <!-- CAPTCHA -->
+    <div class="captcha">
+        <span class="code" id="captcha">ABC123</span>
+        <button type="button" onclick="generateCaptcha()">↻</button>
+    </div>
+
+    <input type="text" id="userCaptcha" placeholder="Enter Captcha">
+
+    <div class="error" id="errorMsg"></div>
+
+    <button onclick="validateForm()">Apply</button>
+
+</div>
+
+<script>
+
+/* CAPTCHA GENERATE */
+function generateCaptcha(){
+    let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code="";
+    for(let i=0;i<6;i++){
+        code+=chars[Math.floor(Math.random()*chars.length)];
+    }
+    document.getElementById("captcha").innerText=code;
+}
+
+/* VALIDATION */
+function validateForm(){
+
+    let name=document.getElementById("name");
+    let phone=document.getElementById("phone");
+    let email=document.getElementById("email");
+    let course=document.getElementById("course");
+    let captcha=document.getElementById("captcha").innerText;
+    let userCaptcha=document.getElementById("userCaptcha");
+    let errorMsg=document.getElementById("errorMsg");
+    let formBox=document.getElementById("formBox");
+
+    /* RESET */
+    [name,phone,email,userCaptcha].forEach(i=>i.classList.remove("error-border"));
+    formBox.classList.remove("shake");
+
+    /* EMPTY CHECK */
+    if(name.value.trim()==="" || phone.value.trim()==="" || email.value.trim()==="" || course.value==="Select Course"){
+        errorMsg.style.color="yellow";
+        errorMsg.innerText="⚠ Fill all required fields";
+        formBox.classList.add("shake");
+
+        if(name.value==="") name.classList.add("error-border");
+        if(phone.value==="") phone.classList.add("error-border");
+        if(email.value==="") email.classList.add("error-border");
+
+        return;
+    }
+
+    /* PHONE VALID */
+    if(!/^[0-9]{10}$/.test(phone.value)){
+        errorMsg.style.color="red";
+        errorMsg.innerText="❌ Enter valid 10-digit phone number";
+        phone.classList.add("error-border");
+        formBox.classList.add("shake");
+        return;
+    }
+
+    /* CAPTCHA */
+    if(userCaptcha.value.trim()!==captcha){
+        errorMsg.style.color="red";
+        errorMsg.innerText="❌ Wrong captcha";
+        userCaptcha.classList.add("error-border");
+        formBox.classList.add("shake");
+        return;
+    }
+
+    /* SUCCESS */
+    errorMsg.style.color="lightgreen";
+    errorMsg.innerText="✅ Form Submitted Successfully!";
+}
+
+</script>
+
+</body>
+</html>

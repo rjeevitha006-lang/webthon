@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Click Dropdown Menu</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+/* Navbar */
+nav {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  padding: 15px 0;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: white;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: 0.3s;
+}
+
+/* Active (show dropdown) */
+.dropdown.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Items */
+.dropdown-menu li a {
+  color: #333;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu li a:hover {
+  background: #0072ff;
+  color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><a href="#">Home</a></li>
+
+    <li class="dropdown" id="aboutMenu">
+      <a onclick="toggleDropdown()">About Us ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Trust</a></li>
+        <li><a href="#">Management</a></li>
+        <li><a href="#">Governing Council</a></li>
+        <li><a href="#">Vision & Mission</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#">Courses Offered</a></li>
+    <li><a href="#">Department</a></li>
+    <li><a href="#">Academics</a></li>
+  </ul>
+</nav>
+
+<script>
+function toggleDropdown() {
+  document.getElementById("aboutMenu").classList.toggle("active");
+}
+
+/* Close when clicking outside */
+window.onclick = function(e) {
+  if (!e.target.matches('#aboutMenu > a')) {
+    document.getElementById("aboutMenu").classList.remove("active");
+  }
+}
+</script>
+
+</body>
+</html>

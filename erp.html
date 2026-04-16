@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RR Dental ERP</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: url("erp.jpg") no-repeat center center/cover;
+    overflow:hidden;
+}
+
+/* DARK OVERLAY */
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    z-index:0;
+}
+
+/* COLLEGE TITLE */
+.title{
+    position:absolute;
+    top:30px;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:32px;
+    letter-spacing:3px;
+    font-weight:bold;
+    text-shadow:0 0 15px rgba(255,255,255,0.8);
+    animation:fadeDown 1.5s ease;
+}
+
+/* LOGIN BOX */
+.login-box{
+    position:relative;
+    z-index:1;
+    width:320px;
+    padding:40px;
+    border-radius:20px;
+    background:rgba(12, 10, 10, 0.1);
+    backdrop-filter: blur(12px);
+    text-align:center;
+    animation:zoomIn 1.2s ease;
+    box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+/* GOLD GLOW BORDER */
+.login-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    padding:2px;
+    background:linear-gradient(45deg, #00f5ff, #ff00ff, #00ff88, gold);
+    background-size:300%;
+    animation:goldMove 5s linear infinite;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+}
+
+/* TITLE */
+.login-box h2{
+    color:#FFD700;
+    margin-bottom:20px;
+    text-shadow:0 0 10px gold;
+}
+
+/* INPUT */
+.input-box{
+    position:relative;
+    margin:20px 0;
+}
+
+.input-box input{
+    width:100%;
+    padding:10px;
+    border:none;
+    outline:none;
+    border-radius:8px;
+    background:rgba(12, 9, 9, 0.2);
+    color:white
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(45deg,#00c6ff,#0072ff);
+    color:rgb(6, 0, 0);
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px cyan;
+}
+
+/* ANIMATIONS */
+@keyframes goldMove{
+    0%{background-position:0%}
+    100%{background-position:300%}
+}
+
+@keyframes zoomIn{
+    from{transform:scale(0.5); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+@keyframes fadeDown{
+    from{transform:translateY(-50px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TITLE -->
+<div class="title">
+RAJARAJESWARI DENTAL COLLEGE & HOSPITAL
+</div>
+
+<!-- LOGIN BOX -->
+<div class="login-box">
+    <h2>ERP LOGIN ✨</h2>
+
+    <div class="input-box">
+        <input type="text" placeholder="👤 Username">
+    </div>
+
+    <div class="input-box">
+        <input type="password" placeholder="🔒 Password">
+    </div>
+
+    <button>Sign In 🚀</button>
+
+</div>
+
+</body>
+</html>
