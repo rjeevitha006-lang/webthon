@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback System</title>
+
+<style>
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url(erp.jpg) no-repeat center center/cover;
+    background-size: cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    background:white;
+    padding:30px 25px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    width:320px;
+    text-align:center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+h2{
+    margin-bottom:15px;
+    color:#333;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:14px;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus{
+    border-color:#667eea;
+    outline:none;
+    box-shadow:0 0 5px rgba(102,126,234,0.5);
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:linear-gradient(135deg, #667eea, #764ba2);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+#successMsg{
+    margin-top:12px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Feedback Form</h2>
+
+    <form id="feedbackForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Feedback" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="successMsg"></p>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// 🔥 YOUR FIREBASE CONFIG
+const firebaseConfig = {
+  apiKey: "AIzaSyA-eZJ7ZBbvsnCZ3lusLO8K1KPpp40C87I",
+  authDomain: "webathon-bdef1.firebaseapp.com",
+  projectId: "webathon-bdef1",
+  storageBucket: "webathon-bdef1.firebasestorage.app",
+  messagingSenderId: "932072637633",
+  appId: "1:932072637633:web:a83dc2e2e32012cf070040"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Submit form
+document.getElementById("feedbackForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    try {
+        await addDoc(collection(db, "feedback"), {
+            name: name,
+            email: email,
+            message: message,
+            timestamp: new Date()
+        });
+
+        document.getElementById("successMsg").innerText = "✅ Feedback submitted!";
+        document.getElementById("successMsg").style.color = "green";
+
+        document.getElementById("feedbackForm").reset();
+
+    } catch (error) {
+        document.getElementById("successMsg").innerText = "❌ Error submitting feedback";
+        document.getElementById("successMsg").style.color = "red";
+        console.error(error);
+    }
+});
+</script>
+
+</body>
+</html>

@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Appointment</title>
+
+<title>Appointment Booking</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: url("erp.jpg")no-repeat center/cover;
+    background: url("erp.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
-/* CONTAINER */
+/* CENTER */
 .container {
     display: flex;
     justify-content: center;
@@ -26,221 +28,183 @@ body {
 /* CARD */
 .card {
     background: white;
-    padding: 30px;
-    width: 400px;
+    padding: 35px;
+    width: 350px;
     border-radius: 15px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    animation: slideUp 1s ease;
 }
 
-/* PROGRESS BAR */
-.progress {
-    height: 6px;
-    background: #ddd;
-    border-radius: 10px;
-    margin-bottom: 20px;
+/* ANIMATION */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.progress-bar {
-    height: 100%;
-    width: 33%;
-    background: #c89b3c;
-    border-radius: 10px;
-    transition: 0.4s;
-}
-
-/* STEP */
-.step {
-    display: none;
-    animation: fade 0.5s ease;
-}
-
-.step.active {
-    display: block;
-}
-
-@keyframes fade {
-    from {opacity:0; transform:translateX(30px);}
-    to {opacity:1; transform:translateX(0);}
+.card h2 {
+    text-align: center;
 }
 
 /* INPUT */
 .input-box {
-    margin: 15px 0;
+    position: relative;
+    margin: 20px 0;
 }
 
 .input-box input,
 .input-box select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+}
+
+/* LABEL */
+.input-box label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: gray;
+    transition: 0.3s;
+}
+
+/* FLOAT EFFECT */
+.input-box input:focus + label,
+.input-box input:valid + label,
+.input-box select:focus + label,
+.input-box select:valid + label {
+    top: -10px;
+    font-size: 12px;
+    color: #c89b3c;
 }
 
 /* BUTTON */
 button {
-    padding: 10px 20px;
+    width: 100%;
+    padding: 12px;
     border: none;
-    border-radius: 20px;
-    background: #c89b3c;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #c89b3c, #a67c2a);
     color: white;
+    font-size: 15px;
     cursor: pointer;
-    margin-top: 10px;
+    transition: 0.3s;
 }
 
-/* TIME SLOT */
-.slots {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.slot {
-    padding: 8px 12px;
-    background: #eee;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.slot.active {
-    background: #c89b3c;
-    color: white;
+button:hover {
+    transform: scale(1.05);
 }
 
 /* POPUP */
 .popup {
     position: fixed;
-    top:0;left:0;
-    width:100%;height:100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0,0,0,0.5);
-    display:none;
-    justify-content:center;
-    align-items:center;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
-.popup-box {
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    text-align:center;
+.popup-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    animation: zoom 0.5s ease;
 }
+
+@keyframes zoom {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+
+.popup button {
+    margin-top: 10px;
+    background: #c89b3c;
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1>Rajarajeswari Dental College</h1>
-        <p>Book Your Appoinment</p>
-    </div>    
-<div class="card">
+    <div class="card">
 
-<div class="progress">
-    <div class="progress-bar" id="bar"></div>
-</div>
+        <h2>Book Appointment</h2>
 
-<!-- STEP 1 -->
-<div class="step active" id="step1">
-    <h3>Patient Details</h3>
-    <div class="input-box"><input type="text" id="name" placeholder="Name"></div>
-    <div class="input-box"><input type="tel" id="phone" placeholder="Phone"></div>
-    <button onclick="next(1)">Next</button>
-</div>
+        <form onsubmit="openPopup(event)">
 
-<!-- STEP 2 -->
-<div class="step" id="step2">
-    <h3>Select Department & Doctor</h3>
-    <div class="input-box">
-        <select id="dept">
-            <option>General Dentistry</option>
-            <option>Orthodontics</option>
-        </select>
+            <div class="input-box">
+                <input type="text" required>
+                <label>Full Name</label>
+            </div>
+
+            <div class="input-box">
+                <input type="tel" required>
+                <label>Phone Number</label>
+            </div>
+
+            <div class="input-box">
+                <input type="date" required>
+                <label></label>
+            </div>
+
+            <div class="input-box">
+                <select required>
+                    <option value=""></option>
+                    <option>General Dentistry</option>
+                    <option>Orthodontics</option>
+                    <option>Oral Surgery</option>
+                </select>
+                <label>Department</label>
+            </div>
+
+            <div class="input-box">
+                <select required>
+                    <option value=""></option>
+                    <option>10:00 AM</option>
+                    <option>11:00 AM</option>
+                    <option>12:00 PM</option>
+                </select>
+                <label>Time Slot</label>
+            </div>
+
+            <button type="submit">Book Now</button>
+
+        </form>
+
     </div>
-    <div class="input-box">
-        <select id="doctor">
-            <option>Dr. Kumar</option>
-            <option>Dr. Priya</option>
-        </select>
-    </div>
-    <button onclick="prev(2)">Back</button>
-    <button onclick="next(2)">Next</button>
-</div>
-
-<!-- STEP 3 -->
-<div class="step" id="step3">
-    <h3>Select Date & Time</h3>
-    <div class="input-box"><input type="date" id="date"></div>
-
-    <div class="slots">
-        <div class="slot" onclick="selectSlot(this)">10 AM</div>
-        <div class="slot" onclick="selectSlot(this)">11 AM</div>
-        <div class="slot" onclick="selectSlot(this)">12 PM</div>
-    </div>
-
-    <button onclick="prev(3)">Back</button>
-    <button onclick="submitForm()">Confirm</button>
-</div>
-
-</div>
 </div>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-    <div class="popup-box">
-        <h3>✅ Appointment Confirmed</h3>
-        <p id="details"></p>
+    <div class="popup-content">
+        <h3>✅ Appointment Booked!</h3>
+        <p>We will contact you soon.</p>
         <button onclick="closePopup()">OK</button>
     </div>
 </div>
 
 <script>
-
-let current = 1;
-let selectedTime = "";
-
-function next(step){
-    document.getElementById("step"+step).classList.remove("active");
-    current++;
-    document.getElementById("step"+current).classList.add("active");
-    updateBar();
-}
-
-function prev(step){
-    document.getElementById("step"+step).classList.remove("active");
-    current--;
-    document.getElementById("step"+current).classList.add("active");
-    updateBar();
-}
-
-function updateBar(){
-    document.getElementById("bar").style.width = (current*33)+"%";
-}
-
-function selectSlot(el){
-    document.querySelectorAll(".slot").forEach(s=>s.classList.remove("active"));
-    el.classList.add("active");
-    selectedTime = el.innerText;
-}
-
-function submitForm(){
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let dept = document.getElementById("dept").value;
-    let doctor = document.getElementById("doctor").value;
-    let date = document.getElementById("date").value;
-
-    localStorage.setItem("appointment", JSON.stringify({name,phone,dept,doctor,date,selectedTime}));
-
-    document.getElementById("details").innerText =
-    `${name} | ${doctor} | ${date} | ${selectedTime}`;
-
+function openPopup(e){
+    e.preventDefault();
     document.getElementById("popup").style.display = "flex";
 }
 
 function closePopup(){
     document.getElementById("popup").style.display = "none";
 }
-
 </script>
 
 </body>

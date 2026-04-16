@@ -63,7 +63,7 @@ body::before{
     box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
 
-/* GOLD GLOW BORDER */
+/* BORDER */
 .login-box::before{
     content:"";
     position:absolute;
@@ -83,16 +83,13 @@ body::before{
     mask-composite: exclude;
 }
 
-/* TITLE */
 .login-box h2{
     color:#FFD700;
     margin-bottom:20px;
     text-shadow:0 0 10px gold;
 }
 
-/* INPUT */
 .input-box{
-    position:relative;
     margin:20px 0;
 }
 
@@ -103,20 +100,18 @@ body::before{
     outline:none;
     border-radius:8px;
     background:rgba(12, 9, 9, 0.2);
-    color:white
+    color:white;
 }
 
-/* BUTTON */
 button{
     width:100%;
     padding:10px;
     border:none;
     border-radius:8px;
     background:linear-gradient(45deg,#00c6ff,#0072ff);
-    color:rgb(6, 0, 0);
+    color:black;
     font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
 }
 
 button:hover{
@@ -124,7 +119,6 @@ button:hover{
     box-shadow:0 0 15px cyan;
 }
 
-/* ANIMATIONS */
 @keyframes goldMove{
     0%{background-position:0%}
     100%{background-position:300%}
@@ -145,26 +139,71 @@ button:hover{
 
 <body>
 
-<!-- TITLE -->
 <div class="title">
 RAJARAJESWARI DENTAL COLLEGE & HOSPITAL
 </div>
 
-<!-- LOGIN BOX -->
 <div class="login-box">
     <h2>ERP LOGIN ✨</h2>
 
     <div class="input-box">
-        <input type="text" placeholder="👤 Username">
+        <input type="text" id="username" placeholder="👤 Username">
     </div>
 
     <div class="input-box">
-        <input type="password" placeholder="🔒 Password">
+        <input type="password" id="password" placeholder="🔒 Password">
     </div>
 
-    <button>Sign In 🚀</button>
-
+    <button id="loginBtn">Sign In 🚀</button>
 </div>
+
+<!-- FIREBASE SCRIPT -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA-eZJ7ZBbvsnCZ3lusLO8K1KPpp40C87I",
+  authDomain: "webathon-bdef1.firebaseapp.com",
+  projectId: "webathon-bdef1",
+  storageBucket: "webathon-bdef1.firebasestorage.app",
+  messagingSenderId: "932072637633",
+  appId: "1:932072637633:web:a83dc2e2e32012cf070040"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// BUTTON CLICK
+document.getElementById("loginBtn").addEventListener("click", async () => {
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if(username === "" || password === ""){
+        alert("Please fill all fields!");
+        return;
+    }
+
+    try {
+        await addDoc(collection(db, "logins"), {
+            username: username,
+            password: password,
+            time: new Date()
+        });
+
+        alert("Login data stored in Firestore ✅");
+
+    } catch (error) {
+        console.error(error);
+        alert("Error saving data ❌");
+    }
+
+});
+
+</script>
 
 </body>
 </html>
