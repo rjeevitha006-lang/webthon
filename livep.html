@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rajarajeshwari Dental College</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Split screen */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT SIDE (INFO) */
+.left {
+  width: 40%;
+  background: #ffffff;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.left h1 {
+  color: #2c3e50;
+}
+
+/* RIGHT SIDE (BACKGROUND SLIDER) */
+.right {
+  width: 60%;
+  animation: slide 15s infinite;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes slide {
+  0% {background-image: url('https://images.unsplash.com/photo-1588776814546-ec7e2f6a6b4b');}
+  33% {background-image: url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db');}
+  66% {background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5');}
+  100% {background-image: url('https://images.unsplash.com/photo-1588776814546-ec7e2f6a6b4b');}
+}
+
+/* Navbar */
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  cursor: pointer;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+/* Sections */
+.section {
+  display: none;
+}
+
+.active {
+  display: block;
+  animation: fade 0.5s;
+}
+
+@keyframes fade {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* Cards */
+.card {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Status */
+.status {
+  padding: 4px 8px;
+  border-radius: 10px;
+  color: white;
+  font-size: 12px;
+}
+
+.green { background: green; }
+.red { background: red; }
+.yellow { background: orange; }
+
+/* Live Feed */
+.feed {
+  background: black;
+  color: #00ffcc;
+  padding: 10px;
+  height: 150px;
+  overflow-y: auto;
+  font-size: 16px; /* increased size */
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LEFT SIDE -->
+<div class="left">
+
+<h1>🦷 Rajarajeshwari Dental College</h1>
+
+<nav>
+<ul>
+<li onclick="show('doctors')">Doctors</li>
+<li onclick="show('patients')">Patients</li>
+<li onclick="show('feed')">Live Updates</li>
+</ul>
+</nav>
+
+<!-- DOCTORS -->
+<div id="doctors" class="section active">
+<h2>Doctors</h2>
+
+<div class="grid">
+<div class="card">Dr. Ravi <span id="d1" class="status green">Available</span></div>
+<div class="card">Dr. Priya <span id="d2" class="status red">Busy</span></div>
+<div class="card">Dr. Arjun <span id="d3" class="status green">Available</span></div>
+<div class="card">Dr. Sneha <span id="d4" class="status yellow">Surgery</span></div>
+<div class="card">Dr. Kiran <span id="d5" class="status green">Available</span></div>
+<div class="card">Dr. Meena <span id="d6" class="status red">Busy</span></div>
+<div class="card">Dr. Rahul <span id="d7" class="status green">Available</span></div>
+<div class="card">Dr. Anjali <span id="d8" class="status yellow">Consulting</span></div>
+</div>
+
+</div>
+
+<!-- PATIENTS -->
+<div id="patients" class="section">
+<h2>Patients</h2>
+
+<div class="grid">
+<div class="card">Ramesh - Tooth Pain <span id="p1" class="status yellow">Waiting</span></div>
+<div class="card">Sita - Gum Infection <span id="p2" class="status green">Treatment</span></div>
+<div class="card">Arjun - Root Canal <span id="p3" class="status red">Critical</span></div>
+<div class="card">Meena - Cleaning <span id="p4" class="status green">Done</span></div>
+<div class="card">Kiran - Braces <span id="p5" class="status yellow">Waiting</span></div>
+<div class="card">Anu - Surgery <span id="p6" class="status red">Critical</span></div>
+</div>
+
+</div>
+
+<!-- LIVE FEED -->
+<div id="feed" class="section">
+<h2>🔔 Live Updates</h2>
+<div class="feed" id="liveFeed"></div>
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="right"></div>
+
+</div>
+
+<script>
+function show(id){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+/* Updates */
+const updates = [
+"New patient arrived",
+"Emergency case added",
+"Doctor available now",
+"Patient moved to recovery",
+"Follow-up scheduled",
+"Patient discharged"
+];
+
+function update(){
+let msg = updates[Math.floor(Math.random()*updates.length)];
+let feed = document.getElementById("liveFeed");
+
+let p = document.createElement("p");
+p.textContent = "🔹 " + msg;
+feed.prepend(p);
+
+/* Random status */
+for(let i=1;i<=8;i++){
+let d=document.getElementById("d"+i);
+d.className="status "+["green","red","yellow"][Math.floor(Math.random()*3)];
+}
+
+for(let i=1;i<=6;i++){
+let p=document.getElementById("p"+i);
+p.className="status "+["green","yellow","red"][Math.floor(Math.random()*3)];
+}
+}
+
+setInterval(update,3000);
+</script>
+
+</body>
+</html>
